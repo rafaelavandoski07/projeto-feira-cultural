@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voz Acessível</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🔊 Voz Acessível</h1>
+    <p>Transformando textos em voz para todos!</p>
+</header>
+
+<main>
+    <div class="container">
+
+        <h2>Transforme seu texto em áudio</h2>
+
+        <p>
+            Digite ou cole seu texto abaixo e clique em
+            "Ouvir texto" para escutar a leitura.
+        </p>
+
+        <label for="texto">Digite seu texto:</label>
+
+        <textarea
+            id="texto"
+            placeholder="Escreva aqui o texto que deseja ouvir..."
+        ></textarea>
+
+        <label for="voz">Escolha a voz:</label>
+
+        <select id="voz">
+            <option value="">Carregando vozes...</option>
+        </select>
+
+        <label for="velocidade">
+            Velocidade da leitura:
+            <span id="valorVelocidade">1x</span>
+        </label>
+
+        <input
+            type="range"
+            id="velocidade"
+            min="0.5"
+            max="2"
+            value="1"
+            step="0.1"
+        >
+
+        <div class="buttons">
+
+            <button class="play" onclick="ouvirTexto()">
+                ▶ Ouvir texto
+            </button>
+
+            <button class="pause" onclick="pausarTexto()">
+                ⏸ Pausar
+            </button>
+
+            <button class="play" onclick="continuarTexto()">
+                ▶ Continuar
+            </button>
+
+            <button class="stop" onclick="pararTexto()">
+                ■ Parar
+            </button>
+
+        </div>
+
+        <p id="status" role="status" aria-live="polite">
+            Pronto para começar!
+        </p>
+
+    </div>
+</main>
+
+<footer>
+    <p>Voz Acessível © 2026</p>
+    <p>Tecnologia e inclusão para todos.</p>
+</footer>
+
+<script src="java.js"></script>
+
+</body>
+</html>

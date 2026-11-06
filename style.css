@@ -1,0 +1,143 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172554;
+}
+
+header {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0 0 10px;
+}
+
+header p {
+    font-size: 19px;
+}
+
+main {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000015;
+}
+
+h2 {
+    font-size: 27px;
+}
+
+label {
+    display: block;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 220px;
+    padding: 18px;
+    font-size: 20px;
+    border: 2px solid #123c69;
+    border-radius: 10px;
+    resize: vertical;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 13px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 2px solid #123c69;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+button {
+    flex: 1;
+    min-width: 130px;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+button:focus,
+textarea:focus,
+select:focus,
+input:focus {
+    outline: 4px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+.play {
+    background: #087443;
+    color: white;
+}
+
+.pause {
+    background: #e6a700;
+    color: #172554;
+}
+
+.stop {
+    background: #bd2525;
+    color: white;
+}
+
+button:hover {
+    filter: brightness(0.9);
+}
+
+#status {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #123c69;
+    color: white;
+    font-size: 17px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 29px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    button {
+        min-width: 100%;
+    }
+}
