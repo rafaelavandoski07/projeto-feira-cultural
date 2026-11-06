@@ -12,13 +12,19 @@ function carregarVozes() {
 
     seletorVoz.innerHTML = "";
 
+    // Prioriza vozes em português do Brasil
     const vozesPortugues = vozes.filter(voz =>
-        voz.lang.toLowerCase().startsWith("pt")
+        voz.lang.toLowerCase() === "pt-br"
     );
 
     if (vozesPortugues.length === 0) {
-        seletorVoz.innerHTML =
-            '<option value="">Nenhuma voz em português encontrada</option>';
+        const opcao = document.createElement("option");
+        opcao.textContent = "Voz brasileira não encontrada";
+        opcao.value = "";
+        seletorVoz.appendChild(opcao);
+
+        status.textContent =
+            "Instale uma voz em português do Brasil no dispositivo.";
         return;
     }
 
@@ -26,10 +32,12 @@ function carregarVozes() {
         const opcao = document.createElement("option");
 
         opcao.value = index;
-        opcao.textContent = voz.name + " (" + voz.lang + ")";
+        opcao.textContent = voz.name;
 
         seletorVoz.appendChild(opcao);
     });
+
+    status.textContent = "Pronto para ler em português!";
 }
 
 speechSynthesis.onvoiceschanged = carregarVozes;
@@ -43,7 +51,7 @@ function ouvirTexto() {
     const conteudo = texto.value.trim();
 
     if (conteudo === "") {
-        status.textContent = "Por favor, digite um texto primeiro!";
+        status.textContent = "Digite um texto primeiro!";
         texto.focus();
         return;
     }
@@ -57,16 +65,19 @@ function ouvirTexto() {
     fala.pitch = 1;
     fala.volume = 1;
 
-    const vozSelecionada = vozes.filter(voz =>
-        voz.lang.toLowerCase().startsWith("pt")
-    )[Number(seletorVoz.value)];
+    const vozesPortugues = vozes.filter(voz =>
+        voz.lang.toLowerCase() === "pt-br"
+    );
+
+    const vozSelecionada =
+        vozesPortugues[Number(seletorVoz.value)];
 
     if (vozSelecionada) {
         fala.voice = vozSelecionada;
     }
 
     fala.onstart = function() {
-        status.textContent = "🔊 Lendo seu texto...";
+        status.textContent = "🔊 Lendo em português...";
     };
 
     fala.onend = function() {
@@ -74,7 +85,7 @@ function ouvirTexto() {
     };
 
     fala.onerror = function() {
-        status.textContent = "Não foi possível reproduzir o áudio.";
+        status.textContent = "Erro ao reproduzir a voz.";
     };
 
     speechSynthesis.speak(fala);
